@@ -1,0 +1,63 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "name": "esnad-institutions-system",
+    "version": "1.0.0",
+    "description": "ESNAD Institutions desktop and web system",
+    "author": "ESNAD",
+    "private": true,
+    "main": "electron/main.cjs",
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "mobile:copy": "npx cap copy",
+        "mobile:sync": "npx cap sync",
+        "mobile:android": "npx cap open android",
+        "mobile:ios": "npx cap open ios",
+        "desktop:dev": "concurrently \"php artisan serve --host=127.0.0.1 --port=8000\" \"wait-on http://127.0.0.1:8000 && electron .\"",
+        "desktop:start": "electron .",
+        "desktop:build-win": "electron-builder --win nsis portable"
+    },
+    "dependencies": {
+        "@capacitor/android": "^7.4.3",
+        "@capacitor/app": "^7.1.1",
+        "@capacitor/core": "^7.4.3",
+        "@capacitor/ios": "^7.4.3",
+        "@capacitor/network": "^7.0.1"
+    },
+    "devDependencies": {
+        "@capacitor/cli": "^7.4.3",
+        "@playwright/test": "^1.58.2",
+        "@tailwindcss/vite": "^4.0.0",
+        "axios": "^1.11.0",
+        "concurrently": "^9.0.1",
+        "electron": "^37.2.1",
+        "electron-builder": "^26.0.12",
+        "laravel-vite-plugin": "^2.0.0",
+        "playwright": "^1.58.2",
+        "tailwindcss": "^4.0.0",
+        "typescript": "^5.9.3",
+        "vite": "^7.0.7",
+        "wait-on": "^8.0.5"
+    },
+    "build": {
+        "appId": "com.esnad.institutions.desktop",
+        "productName": "ESNAD Institutions",
+        "asar": true,
+        "files": [
+            "electron/**/*",
+            "package.json",
+            "public/images/esnad-logo.png"
+        ],
+        "directories": {
+            "output": "desktop-dist"
+        },
+        "win": {
+            "icon": "public/images/esnad-logo.png",
+            "target": [
+                "nsis",
+                "portable"
+            ]
+        }
+    }
+}

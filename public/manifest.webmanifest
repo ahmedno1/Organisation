@@ -1,0 +1,26 @@
+{
+  "name": "Esnad System",
+  "short_name": "Esnad",
+  "description": "منصة إدارة الأسر والاستفادات",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f8fb",
+  "theme_color": "#0f4c7a",
+  "icons": [
+    {
+      "src": "/images/esnad-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/esnad-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

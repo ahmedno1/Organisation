@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\Administrator;
+use App\Models\DataEntry;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class AdministratorPolicy
+{
+    use HandlesAuthorization;
+
+    public function create(Administrator $administrator)
+    {
+        return true; // Allow administrators to create data entry personnel
+    }
+
+    public function update(Administrator $administrator, Administrator $model)
+    {
+        return $administrator->id === $model->id; // Allow administrators to update their own account
+    }
+
+    public function delete(Administrator $administrator, Administrator $model)
+    {
+        return $administrator->id !== $model->id; // Prevent administrators from deleting themselves
+    }
+}
+
+class DataEntryPolicy
+{
+    use HandlesAuthorization;
+
+    public function viewAny(Administrator $administrator)
+    {
+        return true; // Allow administrators to view any data entry personnel
+    }
+
+    public function view(Administrator $administrator, DataEntry $dataEntry)
+    {
+        return $dataEntry->administrator_id === $administrator->id; // Allow data entry personnel to view their own data
+    }
+
+    public function create(Administrator $administrator)
+    {
+        return true; // Allow administrators to create data entry personnel
+    }
+
+    public function update(Administrator $administrator, DataEntry $dataEntry)
+    {
+        return $dataEntry->administrator_id === $administrator->id; // Allow data entry personnel to update their own data
+    }
+
+    public function delete(Administrator $administrator, DataEntry $dataEntry)
+    {
+        return $dataEntry->administrator_id === $administrator->id; // Allow data entry personnel to delete their own data
+    }
+}

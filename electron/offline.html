@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تعذر الاتصال</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --btn: #0b57d0;
+      --btn-hover: #0846a8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top left, #e7efff, var(--bg) 48%);
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      color: var(--text);
+      padding: 24px;
+    }
+    .card {
+      width: min(560px, 100%);
+      background: var(--card);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+      border: 1px solid #dbe5f3;
+    }
+    h1 { margin: 0 0 10px; font-size: 1.55rem; }
+    p { margin: 0 0 12px; color: var(--muted); line-height: 1.7; }
+    code {
+      background: #eef2ff;
+      border-radius: 8px;
+      padding: 2px 6px;
+      color: #1e3a8a;
+    }
+    button {
+      margin-top: 14px;
+      border: 0;
+      background: var(--btn);
+      color: #fff;
+      font-size: 1rem;
+      padding: 11px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover { background: var(--btn-hover); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>تعذر تحميل النظام</h1>
+    <p>تطبيق ويندوز حاول فتح الموقع لكن لم يجد خادمًا يعمل على:</p>
+    <p><code id="target-url">http://127.0.0.1:8000</code></p>
+    <p>شغّل خادم Laravel أولًا أو عيّن متغير البيئة <code>DESKTOP_APP_URL</code> إلى رابط النظام المنشور.</p>
+    <button id="retry">إعادة المحاولة</button>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const targetUrl = params.get('target');
+    if (targetUrl) {
+      document.getElementById('target-url').textContent = targetUrl;
+    }
+
+    document.getElementById('retry').addEventListener('click', () => {
+      if (window.desktopApp?.reload) {
+        window.desktopApp.reload();
+      } else {
+        location.reload();
+      }
+    });
+  </script>
+</body>
+</html>

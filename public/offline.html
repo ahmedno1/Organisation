@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>غير متصل بالإنترنت</title>
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --card: #ffffff;
+            --text: #133246;
+            --muted: #4d6477;
+            --brand: #0f4c7a;
+            --brand-dark: #0b3a5e;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: "Cairo", Tahoma, sans-serif;
+            background: radial-gradient(circle at 20% 10%, #ddebf7, var(--bg));
+            color: var(--text);
+            padding: 20px;
+        }
+
+        .card {
+            width: min(560px, 100%);
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 16px 40px rgba(13, 45, 69, 0.12);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 1.7rem;
+        }
+
+        p {
+            margin: 0 0 16px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 10px;
+            background: var(--brand);
+            color: #fff;
+            padding: 10px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover { background: var(--brand-dark); }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>لا يوجد اتصال بالإنترنت</h1>
+        <p>يمكنك متابعة تصفح الصفحات التي تم تحميلها سابقًا، ثم أعد المحاولة عند عودة الاتصال.</p>
+        <button class="btn" type="button" onclick="location.reload()">إعادة المحاولة</button>
+    </main>
+</body>
+</html>

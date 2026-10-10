@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg { fill: #ffffff; }
+    .ring { fill: #0f4c7a; }
+    .mark { fill: #0f766e; }
+  </style>
+  <rect class="bg" x="2" y="2" width="60" height="60" rx="14"/>
+  <path class="ring" d="M32 11c11.6 0 21 9.4 21 21S43.6 53 32 53 11 43.6 11 32 20.4 11 32 11zm0 6a15 15 0 1 0 0 30 15 15 0 0 0 0-30z"/>
+  <path class="mark" d="M23 30.5a2 2 0 0 1 2-2h15a2 2 0 0 1 0 4H25a2 2 0 0 1-2-2zm0 8a2 2 0 0 1 2-2h10a2 2 0 0 1 0 4H25a2 2 0 0 1-2-2zm16.7-14.7a2 2 0 0 1 2.8 0l2.5 2.5a2 2 0 1 1-2.8 2.8l-2.5-2.5a2 2 0 0 1 0-2.8z"/>
+</svg>

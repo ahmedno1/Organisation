@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreAdministratorRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true; // Allow all users to make this request
+    }
+
+    public function rules()
+    {
+        return [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:administrators',
+            'password' => 'required|string|min:8|confirmed',
+        ];
+    }
+}
+
+class UpdateAdministratorRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true; // Allow all users to make this request
+    }
+
+    public function rules()
+    {
+        return [
+            'name' => 'sometimes|required|string|max:255',
+            'email' => 'sometimes|required|string|email|max:255|unique:administrators,email,' . $this->administrator->id,
+            'password' => 'sometimes|nullable|string|min:8|confirmed',
+        ];
+    }
+}
+
+class StoreDataEntryRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true; // Allow all users to make this request
+    }
+
+    public function rules()
+    {
+        return [
+            'name' => 'required|string|max:255',
+            'administrator_id' => 'required|exists:administrators,id',
+        ];
+    }
+}
+
+class StoreFamilyRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true; // Allow all users to make this request
+    }
+
+    public function rules()
+    {
+        return [
+            'head_of_family' => 'required|string|max:255',
+            'benefits' => 'required|array',
+            'benefits.*' => 'exists:benefits,id',
+        ];
+    }
+}
+
+class StoreRecordRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true; // Allow all users to make this request
+    }
+
+    public function rules()
+    {
+        return [
+            'family_id' => 'required|exists:families,id',
+            'data' => 'required|string',
+        ];
+    }
+}

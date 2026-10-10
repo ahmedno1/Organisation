@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Esnad Institutions</string>
+    <string name="title_activity_main">Esnad Institutions</string>
+    <string name="package_name">com.esnad.institutions</string>
+    <string name="custom_url_scheme">com.esnad.institutions</string>
+</resources>
